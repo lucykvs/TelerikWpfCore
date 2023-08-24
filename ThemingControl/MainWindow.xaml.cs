@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Telerik.Windows.Controls;
 
 namespace ThemingControl {
     /// <summary>
@@ -20,6 +21,7 @@ namespace ThemingControl {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+            this.DataContext = new ThemingViewModel();
         }
     }
 }

@@ -7,4 +7,43 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Telerik.Windows.Controls.Chart.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.Data.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.DataVisualization.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.FileDialogs.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.GridView.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.Input.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.Navigation.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.Pivot.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.RibbonView.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.RichTextBox.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.Spreadsheet.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.SpreadsheetUI.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.SyntaxEditor.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Controls.VirtualGrid.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Crystal.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Expression_Dark.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Fluent.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Green.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Material.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Office2013.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Office2016.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Office2016Touch.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Office2019.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Office_Black.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Office_Blue.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Office_Silver.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Summer.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Transparent.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Vista.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.VisualStudio2013.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.VisualStudio2019.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Windows11.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Windows7.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Windows8.for.Wpf" Version="2023.2.718" />
+    <PackageReference Include="Telerik.Windows.Themes.Windows8Touch.for.Wpf" Version="2023.2.718" />
+  </ItemGroup>
+
 </Project>

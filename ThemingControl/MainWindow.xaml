@@ -4,9 +4,193 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThemingControl"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="AutoCompleteStyle"
+               TargetType="TextBlock">
+            <Setter Property="FontFamily"
+                    Value="Segoe UI"/>
+            <Setter Property="FontSize"
+                    Value="14"/>
+            <Setter Property="Foreground"
+                    Value="#FF0A0A0A"/>
+            <Setter Property="VerticalAlignment"
+                    Value="Center"/>
+        </Style>
+
+        <DataTemplate x:Key="ContactSearchTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding FirstName}"
+                           Style="{StaticResource AutoCompleteStyle}"/>
+                <TextBlock Text="{Binding LastName}"
+                           Style="{StaticResource AutoCompleteStyle}"
+                           Margin="4,0,0,0"/>
+            </StackPanel>
+        </DataTemplate>
+
+
+        <Style x:Key="ListBoxThemingStyle" TargetType="telerik:RadListBox">
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="telerik:RadListBoxItem" 
+                           BasedOn="{StaticResource RadListBoxItemStyle}">
+                        <Setter Property="Margin" Value="5 0 0 0" />
+                        <Setter Property="Padding" Value="3 0 0 0" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="telerik:RadListBoxItem">
+                                    <RadioButton IsChecked="{Binding IsSelected, RelativeSource={RelativeSource Mode=TemplatedParent}}" 
+                                                 Content="{TemplateBinding Content}" 
+                                                 ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                 ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                                 Padding="{TemplateBinding Padding}" 
+                                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="ThemesItemTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" 
+                            Orientation="Horizontal">
+                    <TextBlock Text="{Binding Path=DisplayName}"
+                               VerticalAlignment="Center"
+                               Width="150"/>
+                </StackPanel>
+                <ItemsControl HorizontalAlignment="Right"
+                              Grid.Column="1"
+                              ItemsSource="{Binding AccentColors}"
+                              BorderBrush="#33000000"
+                              BorderThickness="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Rectangle Fill="{Binding}"
+                                       Width="16"
+                                       Height="16"
+                                       Stroke="White"
+                                       StrokeThickness="1"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Grid>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="ThemeRadButtonTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" 
+                            Orientation="Horizontal">
+                    <TextBlock Text="{Binding Path=DisplayName}"
+                               VerticalAlignment="Center"
+                               Width="150"/>
+                </StackPanel>
+                <ItemsControl HorizontalAlignment="Right"
+                              Grid.Column="1"
+                              ItemsSource="{Binding AccentColors}"
+                              BorderBrush="#33000000"
+                              BorderThickness="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Rectangle Fill="{Binding}"
+                                       Width="16"
+                                       Height="16"
+                                       Stroke="White"
+                                       StrokeThickness="1"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Grid>
+        </DataTemplate>
+
+
+    </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.RowSpan="2">
+
+            <telerik:RadAutoCompleteBox VerticalAlignment="Top"
+                                        Margin="5"
+                                        SelectionMode="Multiple"
+                                        WatermarkContent="Type a name"
+                                        TextSearchMode="Contains"
+                                        TextSearchPath="FirstName"
+                                        AutoCompleteMode="Suggest"
+                                        ItemsSource="{Binding ContactsList}"
+                                        DropDownItemTemplate="{StaticResource ContactSearchTemplate}"/>
+
+            <telerik:RadGridView HorizontalAlignment="Left" 
+                                 Margin ="5" 
+                                 VerticalAlignment="Top"
+                                 ItemsSource="{Binding ContactsList}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="1">
+            <telerik:RadDropDownButton x:Name="themeRadButton"
+                                       AutoOpenDelay="0:0:0.0" 
+                                       Width="Auto"
+                                       Height="20"
+                                       VerticalAlignment="Top"
+                                       Margin="5"
+                                       ContentTemplate="{StaticResource ThemeRadButtonTemplate}"
+                                       Content="{Binding CurrentThemeInfo}">
+                <telerik:RadDropDownButton.DropDownContent>
+                    <telerik:RadListBox x:Name="ThemesList" 
+                                 BorderThickness="0" VerticalAlignment="Top" ItemsSource="{Binding Themes}"
+                                 SelectionMode="Single"
+                                 SelectedIndex="10"
+                                 SelectedItem="{Binding CurrentThemeInfo, Mode=TwoWay}"
+                                 ItemTemplate="{StaticResource ThemesItemTemplate}"
+                                 ScrollViewer.PanningMode="None"
+                                 Height="Auto"
+                                 HorizontalContentAlignment="Left">
+                        <!--Style="{StaticResource ListBoxThemingStyle}"-->
+
+                        <telerik:EventToCommandBehavior.EventBindings>
+                            <telerik:EventBinding Command="{Binding ChooseThemeCommand}" EventName="MouseLeftButtonUp" />
+                        </telerik:EventToCommandBehavior.EventBindings>
+                    </telerik:RadListBox>
+
+                </telerik:RadDropDownButton.DropDownContent>
+            </telerik:RadDropDownButton>
+
+        </StackPanel>
 
     </Grid>
 </Window>
